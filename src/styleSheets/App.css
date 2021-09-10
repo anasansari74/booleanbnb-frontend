@@ -1,0 +1,38 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+	scroll-behavior: smooth;
+}
+
+.container {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pointer {
+	cursor: pointer !important;
+}
+
+.becomeAHost h2 {
+	color: #ff5a5f;
+}
+
+.btnBecomeHost:hover {
+	color: white;
+}
+
+input {
+	outline: none;
+}
+
+.radioBtn {
+	width: 50px;
+}
+
+/* input:focus {
+
+	border-color: #ff5a5f;
+} */
