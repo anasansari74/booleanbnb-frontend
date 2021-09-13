@@ -8,13 +8,14 @@ import { useParams } from "react-router";
 import {CgScreen} from "react-icons/cg"
 import {GiGrass, GiGymBag, GiCookingPot} from "react-icons/gi"
 import {FaHotTub, FaParking, FaSwimmingPool, FaWifi} from "react-icons/fa"
+import { Props } from "../App";
 
 
 import AirBnbLogo from "../assets/images/logo.png"
- function OneApartment({ className, userLoggedIn, setUserLoggedIn, userId }) {
+ function OneApartment({ className, userLoggedIn, setUserLoggedIn, userId }: Props) {
 
   const [apartment, setApartment] = useState({})
-  const params = useParams();
+  const params: any = useParams();
 
 
     useEffect(() => {
@@ -30,7 +31,7 @@ import AirBnbLogo from "../assets/images/logo.png"
       
     },[setApartment])
 
-    function loadingExtras(){
+    function loadingExtras(apartment:any){
       if(apartment.extra === undefined){
         return(
           <li>Loading Extras</li>
@@ -47,12 +48,8 @@ import AirBnbLogo from "../assets/images/logo.png"
           {apartment.extra.parkingSpace ? <li >Parking Space<FaParking className="icon"/></li> : <li>Parking Space <FaParking className="icon greyOut"/></li> }
           {apartment.extra.pool ? <li >Swimming Pool<FaSwimmingPool className="icon"/></li> : <li>Swimming Pool <FaSwimmingPool className="icon greyOut"/></li> }
           {apartment.extra.wifi ? <li >Wifi<FaWifi className="icon"/></li> : <li>Wifi <FaWifi className="icon greyOut"/></li> }
-         
-        
         
         </ul>
-        
-        
         )
       }
     }
@@ -102,10 +99,7 @@ import AirBnbLogo from "../assets/images/logo.png"
      <Footer/>
  
      </> 
-
-    
   )
-
  }
   
   export default styled(OneApartment)`
@@ -137,8 +131,6 @@ import AirBnbLogo from "../assets/images/logo.png"
     grid-template-rows: 20px 20px 1fr;
     grid-gap: 20px;
   }
-
- 
 
   .extras ul {
     
@@ -195,21 +187,13 @@ import AirBnbLogo from "../assets/images/logo.png"
     height: 400px;
   }
 
-
-
   .bigImage,  .smallImage{
     width: 100%;
     height: 100%;
     border: 1px solid lightgrey;
   }
-  
 
   .smallImage{
     overflow: hidden;
   }
-
- 
-  
-  
-  
   `

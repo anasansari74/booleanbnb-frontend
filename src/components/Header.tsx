@@ -5,23 +5,25 @@ import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import { useHistory } from "react-router";
 
+import { Props } from "../App";
 
-
-function Header({className, userLoggedIn, setUserLoggedIn, userId}){
-    
-   
-
-    return(
-        <header className={className}>
-            <div className="container headerStyle">
-            <Logo/>
-            <div className="search">
-            <SearchBar/>
-            </div>
-            <BecomeAHost userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} userId={userId}/>
-            </div>
-        </header>
-    )
+function Header({ className, userLoggedIn, setUserLoggedIn, userId }: Props) {
+  return (
+    <header className={className}>
+      <div className="container headerStyle">
+        <Logo className={className} />
+        <div className="search">
+          <SearchBar className={className} />
+        </div>
+        <BecomeAHost
+          className={className}
+          userLoggedIn={userLoggedIn}
+          setUserLoggedIn={setUserLoggedIn}
+          userId={userId}
+        />
+      </div>
+    </header>
+  );
 }
 
 export default styled(Header)`
@@ -56,4 +58,4 @@ grid-gap: 20px;
 }
 
 
-`
+`;

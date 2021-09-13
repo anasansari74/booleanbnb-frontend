@@ -24,6 +24,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Navigation } from "swiper";
 
+import { Apartment, Props } from "../App";
+
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
 
@@ -94,7 +96,7 @@ const PageBodyContainer = styled.div`
 `;
 
 // animated panning
-function SetViewOnClick({ animateRef }) {
+function SetViewOnClick({ animateRef }: any) {
   const map = useMapEvent("click", e => {
     map.setView(e.latlng, map.getZoom(), {
       animate: animateRef.current || true,
@@ -105,17 +107,18 @@ function SetViewOnClick({ animateRef }) {
 }
 
 export default function StaysInAreaPage({
+  className,
   userLoggedIn,
   setUserLoggedIn,
   userId,
-}) {
+}: Props) {
   // Animated Panning
 
   const animateRef = useRef(true);
 
-  let { search } = useParams();
+  let { search }: string = useParams();
 
-  const [apartments, setApartments] = useState([]);
+  const [apartments, setApartments] = useState<Apartment[] | []>([]);
 
   useEffect(() => {
     fetch(`http://localhost:4000/users/apartments/${search}`, {
@@ -171,7 +174,7 @@ export default function StaysInAreaPage({
                   <SwiperSlide>
                     <img
                       src={apartment.imageUrl1}
-                      alt={apartment.id}
+                      alt={apartment.id.toString()}
                       height="150px"
                       width="100%"
                     />
@@ -179,7 +182,7 @@ export default function StaysInAreaPage({
                   <SwiperSlide>
                     <img
                       src={apartment.imageUrl2}
-                      alt={apartment.id}
+                      alt={apartment.id.toString()}
                       height="150px"
                       width="100%"
                     />
@@ -187,7 +190,7 @@ export default function StaysInAreaPage({
                   <SwiperSlide>
                     <img
                       src={apartment.imageUrl3}
-                      alt={apartment.id}
+                      alt={apartment.id.toString()}
                       height="150px"
                       width="100%"
                     />
@@ -213,9 +216,10 @@ export default function StaysInAreaPage({
   return (
     <>
       <Header
-        userLoggedIn={userLoggedIn}
-        setUserLoggedIn={setUserLoggedIn}
-        userId={userId}
+        className={className}
+        userLoggedInProp={userLoggedIn}
+        setUserLoggedInProp={setUserLoggedIn}
+        userIdProp={userId}
       />
       <PageBodyContainer>
         <div className="cards">
@@ -226,7 +230,7 @@ export default function StaysInAreaPage({
         </div>
         <div className="map map-container">{toRender()}</div>
       </PageBodyContainer>
-      <Footer />
+      <Footer className={className} />
     </>
   );
 }

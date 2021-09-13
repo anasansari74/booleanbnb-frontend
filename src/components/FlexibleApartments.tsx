@@ -16,6 +16,7 @@ SwiperCore.use([Pagination, Navigation]);
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Apartment } from "../App";
 
 const FlexApartDiv = styled.div`
   display: grid;
@@ -71,28 +72,6 @@ const FlexApartDiv = styled.div`
     text-overflow: ellipsis;
   }
 `;
-
-export type Apartment = {
-  id: number;
-  priceNight: number;
-  bedrooms: number;
-  maxPeopleIn: number;
-  description: string;
-  city: string;
-  postCode: string;
-  road: string;
-  imageUrl1: string;
-  imageUrl2: string;
-  imageUrl3: string;
-  userOwnerId: number;
-  userRentingId: null;
-  location: [
-    id: number,
-    latitude: number,
-    longitude: number,
-    apartmentId: number
-  ];
-};
 
 type FlexProps = {
   handleClick: () => void;
