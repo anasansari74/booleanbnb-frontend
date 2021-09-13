@@ -1,16 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import AirBnbLogo from "../assets/images/logo.png"
+import AirBnbLogo from "../assets/images/logo.png";
 
-function Logo({ className }) {
+function Logo(props) {
   return (
     <Link to="/">
-      <img
-        src={AirBnbLogo}
-        alt="logo"
-        className={className}
-      />
+      <img src={AirBnbLogo} alt="logo" className={props.className} />
     </Link>
   );
 }

@@ -3,23 +3,20 @@ import styled from "styled-components";
 import BecomeAHost from "./BecomeAHost";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
-import { useHistory } from "react-router";
 
-import { Props } from "../App";
-
-function Header({ className, userLoggedIn, setUserLoggedIn, userId }) {
+function Header(props) {
   return (
-    <header className={className}>
+    <header className={props.className}>
       <div className="container headerStyle">
-        <Logo className={className} />
+        <Logo className={props.className} />
         <div className="search">
-          <SearchBar className={className} />
+          <SearchBar className={props.className} />
         </div>
         <BecomeAHost
-          className={className}
-          userLoggedIn={userLoggedIn}
-          setUserLoggedIn={setUserLoggedIn}
-          userId={userId}
+          className={props.className}
+          userLoggedIn={props.userLoggedIn}
+          setUserLoggedIn={props.setUserLoggedIn}
+          userId={props.userId}
         />
       </div>
     </header>

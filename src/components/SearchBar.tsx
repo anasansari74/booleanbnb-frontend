@@ -35,11 +35,10 @@ export default styled(SearchBar)`
 
   .searchBar {
     background-color: white;
+    height: 44px;
     width: 500px;
     padding: 10px;
     border: none;
     border-radius: 20px;
   }
-
-  
 `;
