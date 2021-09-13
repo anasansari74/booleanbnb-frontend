@@ -35,7 +35,7 @@ function LoginPage(props) {
   }
 
   function handleSubmit(loginForm: UserCredentials) {
-    fetch("http://localhost:4000/login", {
+    fetch(`${process.env.REACT_APP_API_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

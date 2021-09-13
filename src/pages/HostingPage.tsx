@@ -45,7 +45,7 @@ function HostingPage(props) {
   }
 
   function handleSubmit(becomeAHostForm: UserCredentials) {
-    fetch("http://localhost:4000/users", {
+    fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

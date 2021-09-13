@@ -22,7 +22,7 @@ function HostDashBoardPage(props) {
 
   useEffect(() => {
     setCurrentUserId(id);
-    fetch(`http://localhost:4000/users/${currentUserId}/apartments`, {
+    fetch(`${process.env.REACT_APP_API_URL}/${currentUserId}/apartments`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

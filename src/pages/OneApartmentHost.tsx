@@ -17,7 +17,7 @@ function OneApartment(props) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:4000/users/${params.id}/apartments/${params.apartmentId}`,
+      `${process.env.REACT_APP_API_URL}/users/${params.id}/apartments/${params.apartmentId}`,
       {
         method: "GET",
         headers: {

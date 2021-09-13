@@ -74,7 +74,7 @@ function HostAddOne(props) {
   }
 
   function handleSubmit(hostAddOneForm: UserCredentials) {
-    fetch("http://localhost:4000/users/:id/apartments", {
+    fetch(`${process.env.REACT_APP_API_URL}/users/:id/apartments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

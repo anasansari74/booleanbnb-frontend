@@ -59,7 +59,7 @@ function Flexible(props) {
   const [apartments, setApartments] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/users/apartments/`, {
+    fetch(`${process.env.REACT_APP_API_URL}/users/apartments/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

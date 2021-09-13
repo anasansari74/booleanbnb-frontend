@@ -116,7 +116,7 @@ function StaysInAreaPage(props) {
   const [apartments, setApartments] = useState<Apartment[] | []>([]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/users/apartments/${search}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/users/apartments/${search}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
