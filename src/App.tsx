@@ -16,11 +16,11 @@ import Footer from "./components/Footer";
 import HostAddOne from "./pages/HostAddOne";
 
 export type Props = {
-  className?: string;
-  userLoggedIn: boolean;
-  userId: number | null;
-  setUserId: () => void;
-  setUserLoggedId: () => void;
+  // className?: string;
+  // userLoggedIn: boolean;
+  // setUserLoggedIn: () => void;
+  // userId: UserId | null;
+  // setUserId: () => void;
 };
 
 export type Apartment = {
@@ -47,20 +47,10 @@ export type Apartment = {
   ];
 };
 
-type UserLoggedIn = {
-  userLoggedIn: Props["userLoggedIn"];
-  setUserLoggedId: Props["setUserLoggedId"];
-};
+function App(props) {
+  const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false);
 
-type UserId = {
-  userId: Props["userId"];
-  setUserId: Props["setUserId"];
-};
-
-function App({ className }: Props) {
-  const [userLoggedIn, setUserLoggedIn] = useState<UserLoggedIn>(false);
-
-  const [userId, setUserId] = useState<UserId | null>();
+  const [userId, setUserId] = useState<number | null>(null);
 
   return (
     <div className="App ">
@@ -70,7 +60,7 @@ function App({ className }: Props) {
         </Route>
         <Route path="/home">
           <HomePage
-            className={className}
+            className={props.className}
             userLoggedIn={userLoggedIn}
             setUserLoggedIn={setUserLoggedIn}
             userId={userId}
@@ -78,36 +68,36 @@ function App({ className }: Props) {
         </Route>
         <Route path="/placestostay">
           <PlacesToStayPage
-            className={className}
+            className={props.className}
             userLoggedIn={userLoggedIn}
             setUserLoggedIn={setUserLoggedIn}
             userId={userId}
           />
         </Route>
         <Route path="/hosting">
-          <HostingPage className={className} />
+          <HostingPage className={props.className} />
         </Route>
         <Route path="/addhostproperty"></Route>
         {/* <Route path="/:acc"></Route>  This is causing a bug*/}
         <Route path="/login-host">
           <LoginPage
-            className={className}
+            className={props.className}
             setUserLoggedIn={setUserLoggedIn}
             setUserId={setUserId}
           />
         </Route>
         <Route path="/staysin/:search">
           <StaysInAreaPage
-            className={className}
+            className={props.className}
             userLoggedIn={userLoggedIn}
             setUserLoggedIn={setUserLoggedIn}
-            userIdProp={userId}
+            userId={userId}
           />
         </Route>
 
         <Route path="/apartment/:id/:apartmentId/:postCode">
           <OneApartmentHost
-            className={className}
+            className={props.className}
             userLoggedIn={userLoggedIn}
             setUserLoggedIn={setUserLoggedIn}
             userId={userId}
@@ -116,7 +106,7 @@ function App({ className }: Props) {
 
         <Route path="/dashboard/:id">
           <HostDashBoardPage
-            className={className}
+            className={props.className}
             userLoggedIn={userLoggedIn}
             setUserLoggedIn={setUserLoggedIn}
             userId={userId}

@@ -106,12 +106,7 @@ function SetViewOnClick({ animateRef }: any) {
   return null;
 }
 
-export default function StaysInAreaPage({
-  className,
-  userLoggedIn,
-  setUserLoggedIn,
-  userId,
-}: Props) {
+function StaysInAreaPage(props) {
   // Animated Panning
 
   const animateRef = useRef(true);
@@ -216,10 +211,10 @@ export default function StaysInAreaPage({
   return (
     <>
       <Header
-        className={className}
-        userLoggedInProp={userLoggedIn}
-        setUserLoggedInProp={setUserLoggedIn}
-        userIdProp={userId}
+        className={props.className}
+        userLoggedIn={props.userLoggedIn}
+        setUserLoggedIn={props.setUserLoggedIn}
+        userId={props.userId}
       />
       <PageBodyContainer>
         <div className="cards">
@@ -230,7 +225,9 @@ export default function StaysInAreaPage({
         </div>
         <div className="map map-container">{toRender()}</div>
       </PageBodyContainer>
-      <Footer className={className} />
+      <Footer className={props.className} />
     </>
   );
 }
+
+export default styled(StaysInAreaPage)``;

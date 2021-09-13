@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 
 import { Props } from "../App";
 
-function Header({ className, userLoggedIn, setUserLoggedIn, userId }: Props) {
+function Header({ className, userLoggedIn, setUserLoggedIn, userId }) {
   return (
     <header className={className}>
       <div className="container headerStyle">

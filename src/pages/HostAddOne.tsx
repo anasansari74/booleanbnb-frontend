@@ -55,7 +55,7 @@ export type UserCredentials = {
 //   className?: string;
 // };
 
-function HostAddOne({ className }: Props) {
+function HostAddOne(props) {
   const loggedUser = useStore(state => state.loggedUser);
   const setLoggedUser = useStore(store => store.setLoggedUser);
 
@@ -93,13 +93,13 @@ function HostAddOne({ className }: Props) {
   return (
     <>
       <Header
-        className={className}
-        userLoggedIn={userLoggedIn}
-        setUserLoggedIn={setUserLoggedIn}
-        userId={userId}
+        className={props.className}
+        userLoggedIn={props.userLoggedIn}
+        setUserLoggedIn={props.setUserLoggedIn}
+        userId={props.userId}
       />
 
-      <main className={className}>
+      <main className={props.className}>
         <form
           className="hostAddOne container"
           onSubmit={e => {
@@ -329,7 +329,7 @@ function HostAddOne({ className }: Props) {
           <button className="btnHostAddOne">Add apartment</button>
         </form>
       </main>
-      <Footer className={className} />
+      <Footer className={props.className} />
     </>
   );
 }

@@ -19,7 +19,7 @@ export type UserCredentials = {
 // 	className: string
 // }
 
-function LoginPage({ className, setUserLoggedIn, setUserId }: Props) {
+function LoginPage(props) {
   const history = useHistory();
   const [loginForm, setLoginForm] = useState<UserCredentials>(initialForm);
 
@@ -47,9 +47,9 @@ function LoginPage({ className, setUserLoggedIn, setUserId }: Props) {
       .then(
         user => {
           setLoggedUser(user);
-          setUserLoggedIn(true);
+          props.setUserLoggedIn(true);
           console.log(user.data.id);
-          setUserId(user.data.id);
+          props.setUserId(user.data.id);
           history.push(`/dashboard/${user.data.id}`);
         }
 
@@ -60,8 +60,13 @@ function LoginPage({ className, setUserLoggedIn, setUserId }: Props) {
   }
 
   return (
-    <div className={className}>
-      <Header className={className} />
+    <div className={props.className}>
+      <Header
+        className={props.className}
+        userLoggedIn={props.userLoggedIn}
+        setUserLoggedIn={props.setUserLoggedIn}
+        userId={props.userId}
+      />
       <main>
         <form
           className="loginForm container"

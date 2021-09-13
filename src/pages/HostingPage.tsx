@@ -27,7 +27,7 @@ export type UserCredentials = {
 //   className: string;
 // };
 
-function HostingPage({ className }: Props) {
+function HostingPage(props) {
   const loggedUser = useStore(state => state.loggedUser);
   const setLoggedUser = useStore(store => store.setLoggedUser);
 
@@ -64,9 +64,14 @@ function HostingPage({ className }: Props) {
 
   return (
     <>
-      <Header />
+      <Header
+        className={props.className}
+        userLoggedIn={props.userLoggedIn}
+        setUserLoggedIn={props.setUserLoggedIn}
+        userId={props.userId}
+      />
 
-      <main className={className}>
+      <main className={props.className}>
         <form
           className="becomeAHost container"
           // you have to send also role:host !!}
@@ -124,7 +129,7 @@ function HostingPage({ className }: Props) {
           <button className="btnBecomeHost">Become a Host</button>
         </form>
       </main>
-      <Footer className={className} />
+      <Footer className={props.className} />
     </>
   );
 }

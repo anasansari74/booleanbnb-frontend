@@ -17,7 +17,7 @@ import { Props } from "../App";
 //   setUserLoggedIn: () => void;
 // };
 
-function HomePage({ className, userLoggedIn, setUserLoggedIn, userId }: Props) {
+function HomePage({ className, userLoggedIn, setUserLoggedIn, userId }) {
   const getAways = [
     {
       name: "London",

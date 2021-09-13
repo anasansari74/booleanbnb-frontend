@@ -11,22 +11,17 @@ import { useParams } from "react-router";
 
 import useStore from "../store";
 
-function HostDashBoardPage({
-  className,
-  userLoggedIn,
-  setUserLoggedIn,
-  userId,
-}) {
+function HostDashBoardPage(props) {
   // Get current user ID
   const [currentUserId, setCurrentUserId] = useState(1);
   const [hostedProperties, setHostedProperties] = useState([]);
   let amountOfProperties = 0;
   //Fetch with user id
 
-  const params = useParams();
+  const { id }: any = useParams();
 
   useEffect(() => {
-    setCurrentUserId(params.id);
+    setCurrentUserId(id);
     fetch(`http://localhost:4000/users/${currentUserId}/apartments`, {
       method: "GET",
       headers: {
@@ -65,11 +60,12 @@ function HostDashBoardPage({
   }
 
   return (
-    <div className={className}>
+    <div className={props.className}>
       <Header
-        userLoggedInProp={userLoggedIn}
-        setUserLoggedInProp={setUserLoggedIn}
-        userIdProp={userId}
+        className={props.className}
+        userLoggedIn={props.userLoggedIn}
+        setUserLoggedIn={props.setUserLoggedIn}
+        userId={props.userId}
       />
       <main className="container">
         <ul>
@@ -115,7 +111,7 @@ function HostDashBoardPage({
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer className={props.className} />
     </div>
   );
 }

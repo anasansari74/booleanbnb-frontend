@@ -48,7 +48,7 @@ const FlexibleDiv = styled.div`
   }
 `;
 
-export default function Flexible({ className }) {
+function Flexible(props) {
   const [map, setMap] = useState(false);
 
   const handleClick = () => {
@@ -74,7 +74,12 @@ export default function Flexible({ className }) {
 
   return (
     <FlexibleDiv>
-      <Header className={className} />
+      <Header
+        className={props.className}
+        userLoggedIn={props.userLoggedIn}
+        setUserLoggedIn={props.setUserLoggedIn}
+        userId={props.userId}
+      />
 
       <div className="to-be-relative">
         {map === false ? (
@@ -102,7 +107,9 @@ export default function Flexible({ className }) {
           </button>
         )}
       </div>
-      <Footer />
+      <Footer className={props.className} />
     </FlexibleDiv>
   );
 }
+
+export default styled(Flexible)``;
